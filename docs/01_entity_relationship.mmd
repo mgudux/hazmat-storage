@@ -1,0 +1,57 @@
+erDiagram
+    Company ||--o{ Storage : "owns"
+    Storage }o--o{ Content : "contains"
+
+    Company {
+        UUID id PK
+        String name
+        string adress
+        IndustryType industry
+    }
+
+    Storage {
+        UUID id PK
+        UUID companyId FK
+        StorageType type
+        string location
+        int constructionYear
+        Double capacity
+        MeasurementUnit capacityUnit
+        LocalDateTime lastCheck
+        LocalDateTime checkInterval
+    }
+
+    Content {
+        UUID id PK
+        UUID equipmentId FK
+        string name
+        HazardClass hazard
+        Double amount
+        MeasurementUnit amountUnit
+        LocalDateTime expirationDate
+    }
+
+    HAZARD_CLASS {
+        string EXPLOSIVE
+        string FLAMMABLE
+        string TOXIC
+        string RADIOACTIVE
+    }
+
+    MEASUREMENT_UNIT {
+        Double LITER
+        Double KILOGRAM
+        Double PIECE
+    }
+
+    STORAGE_TYPE {
+        string SHELVES
+        string PRESSURE
+        string CRYOGENIC
+        string COMPOST
+    }
+
+    INDUSTRY_TYPE {
+        string LOGISTICS
+        string CHEMICAL
+    }

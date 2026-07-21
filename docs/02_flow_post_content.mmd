@@ -1,0 +1,18 @@
+graph TD
+    Start([POST /api/content]) --> LadeDB(Storage aus Datenbank laden)
+
+    LadeDB --> Existiert{Storage gefunden?}
+
+    Existiert -- Nein --> Error404[Abbruch 404 Not Found]
+    Existiert -- Ja --> CheckUnit{Einheit des Inhalts dieselbe wie Lager?}
+
+
+
+    CheckUnit -- Nein --> Error400A[Abbruch: 400 Bad Request Storage hat nicht genug Kapazität für neuen Content]
+
+    CheckUnit -- Ja --> CheckCapacity{Reicht die Restkapazität im Storage?}
+
+    CheckCapacity -- Nein --> Error400B[Abbruch: 400 Bad Request Storage hat nicht genug Kapazität für neuen Content]
+    CheckCapacity -- Ja --> Save[(Content in Storage speichern)]
+
+    Save --> Success([201 Created])
