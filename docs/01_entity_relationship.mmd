@@ -3,15 +3,15 @@ erDiagram
     Storage }o--o{ Content : "contains"
 
     Company {
-        UUID id PK
+        int id PK
         String name
-        string adress
+        string address
         IndustryType industry
     }
 
     Storage {
-        UUID id PK
-        UUID companyId FK
+        int id PK
+        int companyId FK
         StorageType type
         string location
         int constructionYear
@@ -22,8 +22,8 @@ erDiagram
     }
 
     Content {
-        UUID id PK
-        UUID storageId FK
+        int id PK
+        int storageId FK
         string name
         HazardClass hazard
         Double amount
