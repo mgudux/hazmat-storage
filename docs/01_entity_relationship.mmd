@@ -1,6 +1,6 @@
 erDiagram
     Company ||--o{ Storage : "owns"
-    Storage }o--o{ Content : "contains"
+    Storage ||--o{ Content : "contains"
 
     Company {
         int id PK
@@ -18,7 +18,7 @@ erDiagram
         Double capacity
         MeasurementUnit capacityUnit
         LocalDateTime lastCheck
-        LocalDateTime checkInterval
+        int monthsCheckIntervall
     }
 
     Content {
