@@ -8,9 +8,9 @@ import org.hibernate.validator.constraints.Range;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class StorageDto {
+public interface StorageDto {
 
-    public record Request(
+    record Request(
             @NotNull(message = "Storage requires a Storage Type!") StorageType storageType,
             @NotBlank(message = "Storage requires a location!") String location,
             @Min(value = 1800, message = "Storage requires a construction year") int constructionYear,
@@ -22,7 +22,7 @@ public class StorageDto {
             int monthsCheckIntervall
             ) {}
 
-    public record Summary(
+    record Summary(
             Long id,
             StorageType storageType,
             String location,
@@ -31,7 +31,7 @@ public class StorageDto {
             LocalDateTime lastCheck
     ) {}
 
-    public record Detail(
+    record Detail(
             Long id,
             StorageType storageType,
             String location,
