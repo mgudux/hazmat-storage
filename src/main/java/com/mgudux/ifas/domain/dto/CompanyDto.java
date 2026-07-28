@@ -11,7 +11,7 @@ public interface CompanyDto {
 
     record Request(
             @NotBlank(message = "Der Name der Company darf nicht leer sein!") String name,
-            @NotBlank(message = "Die Adresse der Company darf nicht leer sein") String address,
+            @NotBlank(message = "Die Adresse der Company darf nicht leer sein!") String address,
             @NotNull(message = "Der Industrie Typ der Company darf nicht leer sein") IndustryType industryType
             ) {}
 
