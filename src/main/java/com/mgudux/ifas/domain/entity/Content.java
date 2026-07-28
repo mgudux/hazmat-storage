@@ -29,7 +29,7 @@ public class Content {
 
     @Positive(message = "Content benötigt eine Menge größer als 0!")
     @Column(nullable = false)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "Content benötigt eine Einheit für die Menge")
     @Column(nullable = false)
@@ -73,7 +73,7 @@ public class Content {
         return hazard;
     }
 
-    public double getAmount() {
+    public @Positive(message = "Content benötigt eine Menge größer als 0!") Double getAmount() {
         return amount;
     }
 
@@ -109,7 +109,7 @@ public class Content {
         this.hazard = hazard;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(@Positive(message = "Content benötigt eine Menge größer als 0!") Double amount) {
         this.amount = amount;
     }
 

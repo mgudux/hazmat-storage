@@ -32,7 +32,7 @@ public class Company {
     @NotNull(message = "Company benötigt eine Industriespezifikation!")
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private IndustryType industry;
+    private IndustryType industryType;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -60,10 +60,10 @@ public class Company {
     public Company() {
     }
 
-    public Company(String address, String name, IndustryType industry) {
+    public Company(String address, String name, IndustryType industryType) {
         this.address = address;
         this.name = name;
-        this.industry = industry;
+        this.industryType = industryType;
     }
 
     public List<Storage> getStorages() {
@@ -78,8 +78,8 @@ public class Company {
         return created;
     }
 
-    public IndustryType getIndustry() {
-        return industry;
+    public IndustryType getIndustryType() {
+        return industryType;
     }
 
     public String getAddress() {
@@ -102,8 +102,8 @@ public class Company {
         this.address = address;
     }
 
-    public void setIndustry(IndustryType industry) {
-        this.industry = industry;
+    public void setIndustryType(IndustryType industryType) {
+        this.industryType = industryType;
     }
 
     @Override
@@ -112,7 +112,7 @@ public class Company {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", industry=" + industry +
+                ", industry=" + industryType +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';
