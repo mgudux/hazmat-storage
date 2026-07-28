@@ -14,7 +14,7 @@ CREATE TABLE storage (
     construction_year INT NOT NULL,
     capacity DOUBLE NOT NULL,
     capacity_unit VARCHAR(255) NOT NULL,
-    lastCheck TIMESTAMP NOT NULL,
+    last_check TIMESTAMP NOT NULL,
     months_check_intervall INT NOT NULL,
     updated TIMESTAMP NOT NULL,
     created TIMESTAMP NOT NULL,
