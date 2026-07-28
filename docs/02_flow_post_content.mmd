@@ -4,15 +4,16 @@ graph TD
     LadeDB --> Existiert{Storage gefunden?}
 
     Existiert -- Nein --> Error404[Abbruch 404 Not Found]
-    Existiert -- Ja --> CheckUnit{Einheit des Inhalts dieselbe wie Lager?}
+    Existiert -- Ja --> CheckHazardClass{Erlaubt der Storage Type\ndie mitgelieferte HazardClass?}
 
+    CheckHazardClass -- Nein --> Error400D[Abbruch: 400 Bad Request \nEXPLOSIVE or NULL = SHELVES \nFLAMMABLE = PRESSURE\nTOXIC = CRYOGENIC \nRADIOACTIVE = COMPOST]
+    CheckHazardClass -- Ja --> CheckUnit{Einheit des Inhalts dieselbe wie Lager?}
 
-
-    CheckUnit -- Nein --> Error400A[Abbruch: 400 Bad Request Storage hat nicht genug Kapazität für neuen Content]
+    CheckUnit -- Nein --> Error400A[Abbruch: 400 Bad Request Storage und Content\nmüssen dieselbe Maßeinheit haben]
 
     CheckUnit -- Ja --> CheckCapacity{Reicht die Restkapazität im Storage?}
 
-    CheckCapacity -- Nein --> Error400B[Abbruch: 400 Bad Request Storage hat nicht genug Kapazität für neuen Content]
+    CheckCapacity -- Nein --> Error400B[Abbruch: 400 Bad Request Storage hat \nnicht genug Kapazität für neuen Content]
     CheckCapacity -- Ja --> Save[(Content in Storage speichern)]
 
     Save --> Success([201 Created])
