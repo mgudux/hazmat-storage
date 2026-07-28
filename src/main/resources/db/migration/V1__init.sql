@@ -8,31 +8,31 @@ CREATE TABLE company (
 
 CREATE TABLE storage (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    companyId BIGINT NOT NULL,
-    storageType VARCHAR(255) NOT NULL,
+    company_id BIGINT NOT NULL,
+    storage_type VARCHAR(255) NOT NULL,
     location VARCHAR(255),
-    constructionYear INT NOT NULL,
+    construction_year INT NOT NULL,
     capacity DOUBLE NOT NULL,
-    capacityUnit VARCHAR(255) NOT NULL,
+    capacity_unit VARCHAR(255) NOT NULL,
     lastCheck TIMESTAMP NOT NULL,
-    monthsCheckIntervall INT NOT NULL,
+    months_check_intervall INT NOT NULL,
     updated TIMESTAMP NOT NULL,
     created TIMESTAMP NOT NULL,
 
-    CONSTRAINT fk_storage_company FOREIGN KEY (companyId) REFERENCES company(id)
+    CONSTRAINT fk_storage_company FOREIGN KEY (company_id) REFERENCES company(id)
 );
 
 CREATE TABLE content (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    storageId BIGINT NOT NULL,
+    storage_id BIGINT NOT NULL,
     name VARCHAR(255) NOT NULL,
     hazard VARCHAR(255),
     amount DOUBLE NOT NULL,
-    amountUnit VARCHAR(255) NOT NULL,
-    expirationDate TIMESTAMP,
+    amount_unit VARCHAR(255) NOT NULL,
+    expiration_date TIMESTAMP,
     updated TIMESTAMP NOT NULL,
     created TIMESTAMP NOT NULL,
 
-    CONSTRAINT fk_content_storage FOREIGN KEY (storageId) REFERENCES storage(id)
+    CONSTRAINT fk_content_storage FOREIGN KEY (storage_id) REFERENCES storage(id)
 
 )
