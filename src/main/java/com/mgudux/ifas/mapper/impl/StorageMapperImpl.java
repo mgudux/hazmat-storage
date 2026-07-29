@@ -1,8 +1,8 @@
 package com.mgudux.ifas.mapper.impl;
 
+import com.mgudux.ifas.domain.dto.CompanyDto;
 import com.mgudux.ifas.domain.dto.StorageDto;
 import com.mgudux.ifas.domain.entity.Storage;
-import com.mgudux.ifas.mapper.CompanyMapper;
 import com.mgudux.ifas.mapper.ContentMapper;
 import com.mgudux.ifas.mapper.StorageMapper;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class StorageMapperImpl implements StorageMapper {
 
-    private final CompanyMapper companyMapper;
     private final ContentMapper contentMapper;
 
-    public StorageMapperImpl(CompanyMapper companyMapper, ContentMapper contentMapper) {
-        this.companyMapper = companyMapper;
+    public StorageMapperImpl(ContentMapper contentMapper) {
         this.contentMapper = contentMapper;
     }
 
@@ -38,6 +36,17 @@ public class StorageMapperImpl implements StorageMapper {
         if (storage == null) {
             return null;
         }
+
+        CompanyDto.Summary companySummary = null;
+        if (storage.getCompany() != null) {
+            companySummary = new CompanyDto.Summary(
+                    storage.getCompany().getId(),
+                    storage.getCompany().getName(),
+                    storage.getCompany().getAddress(),
+                    storage.getCompany().getIndustryType()
+            );
+        }
+
         return new StorageDto.Detail(
                 storage.getId(),
                 storage.getStorageType(),
@@ -49,7 +58,7 @@ public class StorageMapperImpl implements StorageMapper {
                 storage.getMonthsCheckIntervall(),
                 storage.getUpdated(),
                 storage.getCreated(),
-                companyMapper.toSummary(storage.getCompany()),
+                companySummary,
                 storage.getContents().stream().map(contentMapper::toSummary).toList()
         );
     }
