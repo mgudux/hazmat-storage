@@ -1,19 +1,13 @@
 package com.mgudux.ifas.mapper.impl;
 
 import com.mgudux.ifas.domain.dto.CompanyDto;
+import com.mgudux.ifas.domain.dto.StorageDto;
 import com.mgudux.ifas.domain.entity.Company;
 import com.mgudux.ifas.mapper.CompanyMapper;
-import com.mgudux.ifas.mapper.StorageMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CompanyMapperImpl implements CompanyMapper {
-
-    private final StorageMapper storageMapper;
-
-    public CompanyMapperImpl(StorageMapper storageMapper) {
-        this.storageMapper = storageMapper;
-    }
 
     @Override
     public CompanyDto.Summary toSummary(Company company) {
@@ -40,7 +34,7 @@ public class CompanyMapperImpl implements CompanyMapper {
                 company.getIndustryType(),
                 company.getUpdated(),
                 company.getCreated(),
-                company.getStorages().stream().map(storageMapper::toSummary).toList()
+                company.getStorages().stream().map(StorageDto.Summary::fromEntity).toList()
         );
 
     }

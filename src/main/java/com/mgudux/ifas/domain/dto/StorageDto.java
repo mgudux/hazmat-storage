@@ -1,5 +1,6 @@
 package com.mgudux.ifas.domain.dto;
 
+import com.mgudux.ifas.domain.entity.Storage;
 import com.mgudux.ifas.domain.entity.enums.MeasurementUnit;
 import com.mgudux.ifas.domain.entity.enums.StorageType;
 import jakarta.validation.constraints.*;
@@ -29,7 +30,21 @@ public interface StorageDto {
             double capacity,
             MeasurementUnit capacityUnit,
             LocalDateTime lastCheck
-    ) {}
+    ) {
+        public static Summary fromEntity(Storage storage) {
+            if (storage == null) {
+                return null;
+            }
+            return new StorageDto.Summary(
+                    storage.getId(),
+                    storage.getStorageType(),
+                    storage.getLocation(),
+                    storage.getCapacity(),
+                    storage.getCapacityUnit(),
+                    storage.getLastCheck()
+            );
+        }
+    }
 
     record Detail(
             Long id,

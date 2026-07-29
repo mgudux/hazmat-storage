@@ -1,19 +1,13 @@
 package com.mgudux.ifas.mapper.impl;
 
 import com.mgudux.ifas.domain.dto.ContentDto;
+import com.mgudux.ifas.domain.dto.StorageDto;
 import com.mgudux.ifas.domain.entity.Content;
 import com.mgudux.ifas.mapper.ContentMapper;
-import com.mgudux.ifas.mapper.StorageMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ContentMapperImpl implements ContentMapper {
-
-    private final StorageMapper storageMapper;
-
-    public ContentMapperImpl(StorageMapper storageMapper) {
-        this.storageMapper = storageMapper;
-    }
 
     @Override
     public ContentDto.Summary toSummary(Content content) {
@@ -44,7 +38,7 @@ public class ContentMapperImpl implements ContentMapper {
                 content.getExpirationDate(),
                 content.getUpdated(),
                 content.getCreated(),
-                storageMapper.toSummary(content.getStorage())
+                StorageDto.Summary.fromEntity(content.getStorage())
         );
 
     }

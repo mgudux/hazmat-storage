@@ -1,5 +1,7 @@
 package com.mgudux.ifas.domain.dto;
 
+import com.mgudux.ifas.domain.entity.Content;
+import com.mgudux.ifas.domain.entity.Storage;
 import com.mgudux.ifas.domain.entity.enums.HazardClass;
 import com.mgudux.ifas.domain.entity.enums.MeasurementUnit;
 import jakarta.validation.constraints.Min;
@@ -36,6 +38,20 @@ public interface ContentDto {
             LocalDateTime expirationDate
 
             ) {
+
+        public static Summary fromEntity(Content content) {
+            if (content == null) {
+                return null;
+            }
+            return new ContentDto.Summary(
+                    content.getId(),
+                    content.getName(),
+                    content.getHazard(),
+                    content.getAmount(),
+                    content.getAmountUnit(),
+                    content.getExpirationDate()
+            );
+        }
 
     }
     record Detail(
