@@ -10,9 +10,6 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    // Exakte Suche (Name ODER Adresse müssen zu 100% stimmen)
-    List<Company> findByNameOrAddress(String name, String address);
-
     // Unscharfe Suche (Teil-Strings, ignoriert Groß- und kleinschreibung)
     List<Company> findByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(String name, String address);
 

@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface StorageRepository extends JpaRepository<Storage, Long> {
@@ -17,5 +16,4 @@ public interface StorageRepository extends JpaRepository<Storage, Long> {
     List<Storage> findAllByConstructionYear(int constructionYear, Sort sort);
     List<Storage> findAllByCapacityGreaterThanEqualAndCapacityUnit(Double capacity, MeasurementUnit capacityUnit, Sort sort);
     List<Storage> findAllByCompany(Company company);
-    Optional<Storage> findByLocation(String location);
 }
