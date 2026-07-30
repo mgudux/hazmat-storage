@@ -3,6 +3,7 @@ package com.mgudux.ifas.mapper;
 import com.mgudux.ifas.domain.dto.StorageDto;
 import com.mgudux.ifas.domain.entity.Storage;
 
+
 public interface StorageMapper {
 
     StorageDto.Summary toSummary(Storage storage);
