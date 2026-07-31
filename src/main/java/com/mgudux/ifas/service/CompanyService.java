@@ -23,8 +23,8 @@ public interface CompanyService {
      * @throws com.mgudux.ifas.exception.ResourceNotFoundException wenn die ID nicht existiert
      * @throws
      */
-    void deleteCompany(long id);
-    CompanyDto.Detail getCompanyById(long id);
+    void deleteCompany(Long id);
+    CompanyDto.Detail getCompanyById(Long id);
     List<CompanyDto.Summary> searchCompanies(String name, String address, IndustryType industryType);
-    CompanyDto.Detail updateCompany(long id, CompanyDto.Request request);
+    CompanyDto.Detail updateCompany(Long id, CompanyDto.Request request);
 }

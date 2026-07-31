@@ -11,8 +11,8 @@ import java.util.List;
 public interface StorageService {
     List<StorageDto.Summary> listStorages();
     StorageDto.Summary createStorage(StorageDto.Request request);
-    void deleteStorage(long id);
-    StorageDto.Detail updateStorage(long id, StorageDto.Request request);
+    void deleteStorage(Long id);
+    StorageDto.Detail updateStorage(Long id, StorageDto.Request request);
     List<StorageDto.Summary> getStoragesByType(StorageType storageType);
     List<StorageDto.Summary> getStoragesByYear(int constructionYear, Sort sort);
     List<StorageDto.Summary> getStoragesByCapacity(Double capacity, MeasurementUnit capacityUnit, Sort sort);
