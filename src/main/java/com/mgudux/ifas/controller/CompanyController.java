@@ -4,7 +4,6 @@ import com.mgudux.ifas.domain.dto.CompanyDto;
 import com.mgudux.ifas.domain.entity.enums.IndustryType;
 import com.mgudux.ifas.service.CompanyService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
