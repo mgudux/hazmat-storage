@@ -21,7 +21,8 @@ public interface CompanyDto {
             String name,
             String address,
             IndustryType industryType
-    ) {
+    )
+    {
         public static Summary fromEntity(Company company) {
             if (company == null) {
                 return null;
