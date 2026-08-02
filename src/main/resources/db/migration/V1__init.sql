@@ -2,7 +2,7 @@ CREATE TABLE company (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
-    industry VARCHAR(255) NOT NULL,
+    industry_type VARCHAR(255) NOT NULL,
     updated TIMESTAMP NOT NULL,
     created TIMESTAMP NOT NULL);
 

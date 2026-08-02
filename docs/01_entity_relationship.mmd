@@ -7,6 +7,10 @@ erDiagram
         String name
         string address
         IndustryType industry
+        List(Storage) storages
+        LocalDateTime updated
+        LocalDateTime created
+
     }
 
     Storage {
@@ -19,6 +23,10 @@ erDiagram
         MeasurementUnit capacityUnit
         LocalDateTime lastCheck
         int monthsCheckIntervall
+        List(Content) contents
+        LocalDateTime updated
+        LocalDateTime created
+
     }
 
     Content {
@@ -29,6 +37,9 @@ erDiagram
         Double amount
         MeasurementUnit amountUnit
         LocalDateTime expirationDate
+        LocalDateTime updated
+        LocalDateTime created
+
     }
 
     HAZARD_CLASS {
